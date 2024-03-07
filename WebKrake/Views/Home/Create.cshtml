@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "Erstellen";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+<head runat="server">
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
+    <script type="text/javascript" src="~/Scripts/function.js" runat="server"></script>
+</head>
+<div>
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Bar')">Bar</button>
+        <button class="tablinks active" onclick="openTab(event, 'Party')">Party</button>
+        <button class="tablinks" onclick="openTab(event, 'Location')">Location</button>
+        <button class="tablinks" onclick="openTab(event, 'Delete')">Delete</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Bar" class="tabcontent SwipeRight">
+        <form method="post" id="form-bar" action="Bar">
+            <div class="create-grid">
+                <div class="create-grid-Title"><input name="Title" type="text" required placeholder="Title" /></div>
+                <div class="create-grid-Description">
+                    <select name="Description" form="form-bar">
+                        @foreach (var l in Model.Location)
+                        {
+                            <option value="@l.Name">@l.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="create-grid-Date"><input name="Date" type="date" required placeholder="Datum" /></div>
+                <div class="create-grid-Time"><input name="Time" type="time" required placeholder="Uhrzeit" /></div>
+                <div class="create-grid-City">
+                    <select name="City" form="form-bar">
+                        @foreach (var city in Model.City)
+                        {
+                            <option value="@city">@city</option>
+                        }
+                    </select>
+                </div>
+                <div class="create-grid-Entryfee"> <input name="Entryfee" type="text" required placeholder="Eintritt" /></div>
+                <div class="create-grid-Sponsored"><label id="sponsored-label-bar" for="Sponsored">Gesponsert?:</label>  <input id="sponsored-checkbox-bar" name="Sponsored" type="checkbox" onchange="checkBox('bar')" /></div>
+                <div class="create-grid-Text"><textarea form="form-bar" name="Text" placeholder="Text" runat="server"></textarea></div>
+                <div class="create-grid-Image"><input id="create-img-bar" name="Image" type="text" required placeholder="Bild" contenteditable="false" readonly /></div>
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+
+    <div id="Party" class="tabcontent" style="display:block">
+        <form method="post" id="form-party" action="Event">
+            <div class="create-grid">
+                <div class="create-grid-Title"><input name="Title" type="text" required placeholder="Title" /></div>
+                <div class="create-grid-Description">
+                    <select name="Description" form="form-party">
+                        @foreach (var l in Model.Location)
+                        {
+                            <option value="@l.Name">@l.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="create-grid-Date"><input name="Date" type="date" required placeholder="Datum" /></div>
+                <div class="create-grid-Time"><input name="Time" type="time" required placeholder="Uhrzeit" /></div>
+                <div class="create-grid-City">
+                    <select name="City" form="form-party">
+                        @foreach (var city in Model.City)
+                        {
+                            <option value="@city">@city</option>
+                        }
+                    </select>
+                </div>
+                <div class="create-grid-Entryfee"> <input name="Entryfee" type="text" required placeholder="Eintritt" /></div>
+                <div class="create-grid-Sponsored"><label id="sponsored-label-party" for="Sponsored">Gesponsert?:</label>  <input id="sponsored-checkbox-party" name="Sponsored" type="checkbox" onchange="checkBox('party')" /></div>
+                <div class="create-grid-Text"><textarea form="form-party" name="Text" placeholder="Text" runat="server"></textarea></div>
+                <div class="create-grid-Image"><input id="create-img-party" name="Image" type="text" required placeholder="Bild" contenteditable="false" readonly /></div>
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+
+    <div id="Location" class="tabcontent SwipeLeft">
+        <form method="post" id="form-location" action="Location">
+            <div class="create-grid">
+                <div class="create-grid-Title"><input name="Name" type="text" required placeholder="Name" /></div>
+                <div class="create-grid-Description"><input name="Street" type="text" required placeholder="Straße" /> </div>
+                <div class="create-grid-City">
+                    <select name="City" form="form-location">
+                        @foreach (var city in Model.City)
+                        {
+                            <option value="@city">@city</option>
+                        }
+                    </select>
+                </div>
+                <div class="create-grid-Sponsored"><label id="sponsored-label-location" for="Sponsored">Ist die Location eine Bar?:</label>  <input id="sponsored-checkbox-location" name="Bar" type="checkbox" onchange="checkBox('location')" /></div>
+                <div class="create-grid-Text"><textarea form="form-location" name="Text" placeholder="Text" runat="server"></textarea></div>
+                <div class="create-grid-Image"><input id="create-img-location" name="Image" type="text" required placeholder="Bild" contenteditable="false" readonly /></div>
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+
+    <div id="Delete" class="tabcontent SwipeLeft">
+        <form id="form-expired" method="post" action="Expired"> 
+            <input type="submit" value="Abgelaufene Events löschen (letztes mal wurden @Model.AffectedRows Events gelöscht)"/>
+        </form>
+        <form method="post" id="form-delete" action="Delete">
+            <p>Bitte das Objekt, welches gelöscht werden soll, anklicken und dann mit Löschen bestätigen.</p>
+            <div class="delete-selected">
+                <input id="delte-obj-id" name="Id" placeholder="Name" hidden />
+                <input id="delte-obj-name" placeholder="Name" readonly />
+                <input id="delte-obj-des" placeholder="Ort" readonly />
+                <input id="delte-obj-date" placeholder="Datum" readonly />
+                <input id="delte-obj-time" placeholder="Zeit" readonly />
+                <input id="delte-obj-type" name="Table" placeholder="Typ" readonly />
+                <input type="submit" value="Löschen" />
+            </div>
+            <div class="delete-grid">
+                <div class="delete-bar">
+                    @for (int i = 0; i < Model.Bar.Count; i++)
+                    {
+                        <div class="row delete-row">
+                            <div class="event-grid delete" id="b-@i" onclick="selectDelteObj('@Model.Bar[i].Id','@Model.Bar[i].Title', '@Model.Bar[i].Description','@Model.Bar[i].Time', '@Model.Bar[i].Date', 'bar')">
+                                <div class="event-img-container mini"><div class="event-img"><img src="@Model.Bar[i].Image" /></div></div>
+                                <div class="event-heading">
+                                    <span>@Model.Bar[i].Title</span> @if (Model.Bar[i].Sponsored == "1")
+                                    {<span>GESPONSERT</span>}
+                                </div>
+                                <div class="event-location"><span>@Model.Bar[i].Description</span></div>
+                                <div class="event-time"><span>@Model.Bar[i].Time Uhr</span></div>
+                                <div class="event-date"><span>@Model.Bar[i].Date</span></div>
+                                <div class="event-text"><p>@Model.Bar[i].Text</p></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="delete-party">
+                    @for (int i = 0; i < Model.Party.Count; i++)
+                    {
+                        <div class="row delete-row">
+                            <div class="event-grid delete" id="p-@i" onclick="selectDelteObj('@Model.Party[i].Id', '@Model.Party[i].Title', '@Model.Party[i].Description','@Model.Party[i].Time', '@Model.Party[i].Date', 'party')">
+                                <div class="event-img-container"><div class="event-img"><img src="@Model.Party[i].Image" /></div></div>
+                                <div class="event-heading">
+                                    <span>@Model.Party[i].Title</span> @if (Model.Party[i].Sponsored == "True")
+                                    {<span style="font-size: 8px">GESPONSERT</span>}
+                                </div>
+                                <div class="event-location"><span>@Model.Party[i].Description</span></div>
+                                <div class="event-time"><span>@Model.Party[i].Time Uhr</span></div>
+                                <div class="event-date"><span>@Model.Party[i].Date</span></div>
+                                <div class="event-text"><p>@Model.Party[i].Text</p></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="delete-location">
+                    @for (int i = 0; i < Model.Location.Count; i++)
+                    {
+                        <div class="row delete-row" id="r-@i">
+                            <div class="event-grid delete" id="re-@i" onclick="selectDelteObj('@Model.Location[i].Id', '@Model.Location[i].Name', '@Model.Location[i].Street','@Model.Location[i].City', '', 'location')">
+                                <div class="event-img-container"><div class="event-img"><img src="@Model.Location[i].Image" /></div></div>
+                                <div class="event-heading"><span>@Model.Location[i].Name</span></div>
+                                <div class="event-location"><span>@Model.Location[i].Street</span></div>
+                                <div class="event-time"><span>@Model.Location[i].City</span></div>
+                                <div class="event-text"><p>@Model.Location[i].Text</p></div>
+                            </div>                            
+                        </div>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="create-img-selection">
+    @for (int i = 1; i < 38 + 1; i++)
+    {
+        string src = "https://www.krake-party.de/img/example_" + i.ToString() + ".jpg";
+        <div class="create-image-div" style="display: inline-block">
+            <img onclick="clickedOnImage(@i.ToString())" style="width: 100px" src="@src.ToString()" />
+        </div>
+    }
+</div>

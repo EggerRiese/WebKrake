@@ -1,0 +1,242 @@
+
+/* 
+    ============================================
+    Dropdown
+    ============================================
+*/
+
+.dropdown-login {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 200px;
+    top: 50px;
+    animation: 0.8s ease;
+}
+.dropdown-cookies {
+    display:none;
+    position: absolute;
+    background-color: #1d1d2d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    color: whitesmoke;
+    z-index: 1;
+    width: 200px;
+    top: 15px;
+    left: 70%;
+}
+.cookie {
+    display:block;
+    animation: showUp 1.8s ease;
+}
+.dropdown-cookies button{
+    width: 100%;
+    background-color: transparent;
+    border-color: transparent;
+    color: #f60;
+}
+
+/* 
+    ============================================
+    Login
+    ============================================
+*/
+
+.login-form input {
+    width: 200px;
+}
+.login-btn {
+    background-color: transparent;
+    border: none;
+    padding: 15px;
+    transition: .2s ease;
+}
+.logo-main {
+    display: block;
+    margin: auto;
+}
+.orange {
+    color: #f60;
+}
+.login-btn:hover {
+    color: #333;
+}
+
+/* 
+    ============================================
+    event row
+    ============================================
+*/
+
+.row {
+    border-top: solid 1px #333;
+    border-bottom: solid 1px transparent;
+    width: 80%;
+    margin: auto !important;
+    overflow: hidden;
+}
+.row:hover {
+    border-top: solid 1px #f60;
+    border-bottom: solid 1px #f60;
+    transition: 0.3s;
+}
+.event-grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto;
+    max-height: 76px;
+    color: whitesmoke;
+    overflow: hidden;
+}
+.event-img {
+    grid-row: 1 / span 3;
+    /*transition: transform 5.2s ease;*/
+    transition: transform 20s ease;
+    transform-origin: center center;
+}
+.event-img-container {
+    width: 100px;
+    height: 71px;
+    overflow: hidden;
+    margin-top: 2px;
+    grid-row: 1 / span 3;
+    margin: 2px 0 0 4px;
+}
+.event-img img {
+    height: 74px;
+    width: auto;
+    padding: 0;
+    object-fit: contain;
+}
+.event-heading {
+    grid-column: 2 / span 3;
+    font-size: 22px;
+}
+.event-text {
+    grid-column: 2 / span 3;
+}
+.event-text p, .event-text-mini p {
+    margin: 0;
+    white-space: pre-line;
+}
+.event-grid:hover .event-heading {
+    color: #f60;
+    transition: 0.3s;
+}
+.event-grid:hover .event-img {
+    transform: scale(1.2);
+}
+.event-listforlocation{
+    grid-row: 4;
+    grid-column: 2 / span 3;
+}
+
+/* 
+    ============================================
+    event row mini
+    ============================================
+*/
+.row-mini {    
+    display: none;
+}
+.event-grid-mini {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto auto auto;
+    max-height: 76px;
+    width: 100%;
+    color: whitesmoke;
+    overflow: hidden;
+    border-top: solid 1px #333;
+    border-bottom: solid 1px transparent;
+}
+.expanded {
+    display: block;
+    width: 75%;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    animation: expaned .5s linear;
+}
+.expandedEvent {
+    max-height: 2000px;
+    animation: expaned .5s linear;
+}
+.event-img-mini {
+    grid-row: 1 / span 3;
+    /*transition: transform 5.2s ease;*/
+    transition: transform 20s ease;
+    transform-origin: center center;
+}
+.event-img-container-mini {
+    width: 100px;
+    height: 71px;
+    overflow: hidden;
+    margin-top: 2px;
+    grid-row: 1 / span 3;
+    margin: 2px 0 0 4px;
+}
+.event-img-mini img {
+    height: 74px;
+    width: auto;
+    padding: 0;
+    object-fit: contain;
+}
+.event-heading-mini {
+    grid-column: 2 / span 3;
+    font-size: 22px;
+}
+.event-text-mini {
+    grid-column: 2 / span 3;
+}
+.event-text-mini span {
+    white-space: pre;
+}
+.event-grid-mini:hover .event-heading-mini {
+    color: #f60;
+    transition: 0.3s;
+}
+.event-grid-mini:hover .event-img-mini {
+    transform: scale(1.2);
+}
+.event-grid-mini:hover {
+    border-top: solid 1px #f60;
+    border-bottom: solid 1px #f60;
+    transition: 0.3s;
+}
+
+/* 
+    ============================================
+    Tabbar
+    ============================================
+*/
+.tab {
+    overflow: hidden;
+    border: none;
+    background-color: transparent;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+.tab button:hover {
+    color: #f60;
+}
+.tab button.active {
+    color: #f60;
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: none;
+    border-top: none;
+    transition: 0.3s;
+}

@@ -1,0 +1,76 @@
+﻿/* 
+    ============================================
+    Main Stuff
+    ============================================
+*/
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+body, .jumbotron, .login-form input {
+    background-color: #1D1D2D;
+    border: none;
+}
+
+.navbar, .navbar-inverse, .navbar-fixed-top {
+    background-color: transparent;
+    border: none;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* 
+    ============================================
+    Error
+    ============================================
+*/
+
+.error-info h2{
+    color: #f60;
+}
+.error-info p{
+    color: white;
+}
+
+/* 
+    ============================================
+    Footer
+    ============================================
+*/
+
+hr {
+    margin-bottom: 0;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    transition: .2s ease;
+}
+
+    footer span {
+        padding: 15px;
+    }
+
+    footer:hover {
+        color: #f60;
+    }

@@ -1,0 +1,99 @@
+﻿
+
+
+<div class="jumbotron">
+    <img class="logo-main" id="logo-main" src="~/Ressources/logo.png" />
+</div>
+
+<div class="content">
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Bar')">Bar</button>
+        <button class="tablinks active" onclick="openTab(event, 'Party')">Party</button>
+        <button class="tablinks" onclick="openTab(event, 'Location')">Location</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="Bar" class="tabcontent SwipeRight">
+        @for (int i = 0; i < Model.Bar.Count; i++)
+        {
+            <div class="row">
+                <div class="event-grid" id="b-@i" onclick="showFullEvent('b-@i')">
+                    <div class="event-img-container"><div class="event-img"><img src="@Model.Bar[i].Image" /></div></div>
+                    <div class="event-heading"><span>@Model.Bar[i].Title</span> @if (Model.Bar[i].Sponsored == "1") {<span>GESPONSERT</span> }</div>
+                    <div class="event-location"><span>@Model.Bar[i].Description</span></div>
+                    <div class="event-time"><span>@Model.Bar[i].Time Uhr</span></div>
+                    <div class="event-date"><span>@Model.Bar[i].Date</span></div>
+                    <div class="event-text"><p>@Model.Bar[i].Text</p></div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="Party" class="tabcontent" style="display:block">
+        @for (int i = 0; i < Model.Party.Count; i++)
+        {
+            <div class="row">
+                <div class="event-grid" id="p-@i" onclick="showFullEvent('p-@i')">
+                    <div class="event-img-container"><div class="event-img"><img src="@Model.Party[i].Image" /></div></div>
+                    <div class="event-heading"><span>@Model.Party[i].Title</span> @if (Model.Party[i].Sponsored == "True"){<span style="font-size: 8px">GESPONSERT</span>}</div>
+                    <div class="event-location"><span>@Model.Party[i].Description</span></div>
+                    <div class="event-time"><span>@Model.Party[i].Time Uhr</span></div>
+                    <div class="event-date"><span>@Model.Party[i].Date</span></div>
+                    <div class="event-text"><p>@Model.Party[i].Text</p></div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="Location" class="tabcontent SwipeLeft">
+        @for (int i = 0; i < Model.Location.Count; i++)
+        {
+        <div class="row" id="r-@i">
+            <div class="event-grid" id="re-@i" onclick="showFullLocation('rm-@i', 're-@i')">
+                <div class="event-img-container"><div class="event-img"><img src="@Model.Location[i].Image" /></div></div>
+                <div class="event-heading"><span>@Model.Location[i].Name</span></div>
+                <div class="event-location"><span>@Model.Location[i].Street</span></div>
+                <div class="event-time"><span>@Model.Location[i].City</span></div>
+                <div class="event-text"><p>@Model.Location[i].Text</p></div>
+            </div>
+            <div class="row-mini" id="rm-@i">
+                @for (int k = 0; k < Model.Party.Count; k++)
+                {
+                    if (Model.Location[i].Name == Model.Party[k].Description)
+                    {
+                        <div class="event-grid-mini" id="eventList-@k" onclick="showFullEvent('eventList-@k')">
+                            <div class="event-img-container-mini"><div class="event-img-mini"><img src="@Model.Party[k].Image" /></div></div>
+                            <div class="event-heading-mini"><span>@Model.Party[k].Title</span></div>
+                            <div class="event-location-mini"><span>@Model.Party[k].Description</span></div>
+                            <div class="event-time-mini"><span>@Model.Party[k].Time Uhr</span></div>
+                            <div class="event-date-mini"><span>@Model.Party[k].Date</span></div>
+                            <div class="event-text-mini"><p>@Model.Party[k].Text</p></div>
+                        </div>
+                    }
+                }
+                @for (int j = 0; j < Model.Bar.Count; j++)
+                {
+                    if (Model.Location[i].Name == Model.Bar[j].Description)
+                    {
+                        <div class="event-grid-mini" id="eventListBar-@j" onclick="showFullEvent('eventListBar-@j')">
+                            <div class="event-img-container-mini"><div class="event-img-mini"><img src="@Model.Bar[j].Image" /></div></div>
+                            <div class="event-heading-mini"><span>@Model.Bar[j].Title</span></div>
+                            <div class="event-location-mini"><span>@Model.Bar[j].Description</span></div>
+                            <div class="event-time-mini"><span>@Model.Bar[j].Time Uhr</span></div>
+                            <div class="event-date-mini"><span>@Model.Bar[j].Date</span></div>
+                            <div class="event-text-mini"><p>@Model.Bar[j].Text</p></div>
+                        </div>
+                    }
+                }
+            </div>            
+            </div>
+        }        
+    </div>
+</div>
+
+<div class="mobile-sticker">
+    <img src="~/Ressources/mobile_sticker.png" />
+</div>
+
+

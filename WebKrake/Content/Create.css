@@ -1,0 +1,92 @@
+﻿
+.create-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.create-grid-Title, .create-grid-Image, .create-grid-Text {
+    grid-column: 1 / span 3;
+}
+.create-grid input, .create-grid textarea, .create-grid select {
+    padding: 20px 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-color: transparent;
+    transition: 0.3s;
+    color: #f60;
+}
+.create-grid input:hover {
+    border-color: #f60;
+    color: #f60;
+}
+.create-grid-City select:hover {
+    border: 1px solid #f60;
+}
+.create-grid-Description select:hover {
+    border: 1px solid #f60;
+}
+.create-grid-Sponsored {
+    border: 1px solid transparent;
+}
+.create-grid-Sponsored:hover {
+    border: 1px solid #f60;
+}
+.create-grid textarea:hover {
+    border-color: #f60;
+    color: #f60;
+}
+.create-grid input::placeholder {
+    color: gray;
+}
+.create-grid input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: gray;
+}
+.create-grid input::-ms-input-placeholder { /* Microsoft Edge */
+    color: gray;
+}
+.create-grid textarea::placeholder {
+    color: gray;
+}
+.create-grid textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: gray;
+}
+.create-grid textarea::-ms-input-placeholder { /* Microsoft Edge */
+    color: gray;
+}
+#sponsored-label-bar, #sponsored-label-party, #sponsored-label-location {
+    padding-top: 22px;
+}
+#sponsored-checkbox-bar, #sponsored-checkbox-party, #sponsored-checkbox-location {
+    width: 30%;
+}
+
+
+
+
+.delete-grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+.delete{
+    grid-template-columns: auto auto auto auto !important;
+}
+.delete-row{
+    width: 97% !important;
+}
+#form-delete input {
+    background-color: transparent;
+    border: none;
+    color: #f60;
+    padding-bottom: 20px;
+}
+
+#form-expired input{
+    max-width: 1000px;
+    background-color: transparent;
+    color: #f60;
+    border: 1px solid #f60;
+    padding: 5px 8px 5px 8px;
+}
+#form-expired{
+    padding: 0 0 10px 0;
+}

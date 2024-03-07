@@ -1,0 +1,17 @@
+﻿
+.mobile-sticker{
+    display: none;
+    
+}
+.mobile-sticker img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .navbar, .jumbotron, .content {
+        display: none;
+    }
+    .mobile-sticker{
+        display: block;
+    }
+}
